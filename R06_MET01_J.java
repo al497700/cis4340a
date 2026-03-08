@@ -1,3 +1,6 @@
+// Rule 06. Methods (MET) Example 1
+// NonCompliant
+
 public static int getAbsAdd(int x, int y) {
     assert x != Integer.MIN_VALUE;
     assert y != Integer.MIN_VALUE;
@@ -5,4 +8,5 @@ public static int getAbsAdd(int x, int y) {
     int absY = Math.abs(y);
     assert (absX <= Integer.MAX_VALUE - absY);
     return absX + absY;
+
 }
