@@ -1,3 +1,6 @@
+// Rule 14. Serialization (SER) Example 12
+// NonCompliant
+
 import java.io.*;
 
 class DeserializeExample {
@@ -10,4 +13,5 @@ class DeserializeExample {
     }
     return ret;
   }
+
 }
