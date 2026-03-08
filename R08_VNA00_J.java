@@ -1,8 +1,8 @@
 // Rule 08. Visibility and Atomicity (VNA) Example 0
-// NonCompliant
+// Compliant
 
 final class ControlledStop implements Runnable {
-  private boolean done = false; // not volatile — other threads may see stale value
+  private volatile boolean done = false; // volatile ensures visibility
 
   @Override public void run() {
     while (!done) {
@@ -17,5 +17,5 @@ final class ControlledStop implements Runnable {
   public void shutdown() {
     done = true;
   }
-
 }
+
