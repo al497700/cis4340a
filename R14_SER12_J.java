@@ -1,17 +1,36 @@
 // Rule 14. Serialization (SER) Example 12
-// NonCompliant
+// Complioant
 
 import java.io.*;
+import java.util.*;
+
+class WhitelistedObjectInputStream extends ObjectInputStream {
+  public Set whitelist;
+
+  public WhitelistedObjectInputStream(InputStream inputStream, Set wl) throws IOException {
+    super(inputStream);
+    whitelist = wl;
+  }
+
+  @Override
+  protected Class<?> resolveClass(ObjectStreamClass cls) throws IOException, ClassNotFoundException {
+    if (!whitelist.contains(cls.getName())) {
+      throw new InvalidClassException("Unexpected serialized class", cls.getName());
+    }
+    return super.resolveClass(cls);
+  }
+}
 
 class DeserializeExample {
-  public static Object deserialize(byte[] buffer) throws IOException, ClassNotFoundException {
+  private static Object deserialize(byte[] buffer) throws IOException, ClassNotFoundException {
     Object ret = null;
+    Set whitelist = new HashSet<String>(Arrays.asList(new String[]{"GoodClass1","GoodClass2"}));
     try (ByteArrayInputStream bais = new ByteArrayInputStream(buffer)) {
-      try (ObjectInputStream ois = new ObjectInputStream(bais)) {
+      try (WhitelistedObjectInputStream ois = new WhitelistedObjectInputStream(bais, whitelist)) {
         ret = ois.readObject();
       }
     }
     return ret;
   }
-
 }
+
