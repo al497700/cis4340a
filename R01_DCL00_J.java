@@ -1,3 +1,6 @@
+// Rule 01. Declarations and Initialization (DCL) Example 0 
+// NonCompliant
+
 public class Cycle {
   private final int balance;
   private static final Cycle c = new Cycle();
@@ -10,4 +13,5 @@ public class Cycle {
   public static void main(String[] args) {
     System.out.println("The account balance is: " + c.balance);
   }
+
 }
