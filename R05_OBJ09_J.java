@@ -1,9 +1,8 @@
 // Rule 05. Object Orientation (OBJ) Example 9
-// NonCompliant
+// Compliant
 
-// Comparing by class name string — a malicious class with the same name can bypass this check!
-if (auth.getClass().getName().equals(
-    "com.application.auth.DefaultAuthenticationHandler")) {
+// Compare the actual class objects — not their names
+if (auth.getClass() == com.application.auth.DefaultAuthenticationHandler.class) {
   // ...
-
 }
+
