@@ -1,3 +1,6 @@
+// Rule 07. Exceptional Behavior (ERR) Example 8
+// NonCompliant
+
 boolean isName(String s) {
   try {
     String names[] = s.split(" ");
@@ -8,4 +11,5 @@ boolean isName(String s) {
   } catch (NullPointerException e) {
     return false;
   }
+
 }
