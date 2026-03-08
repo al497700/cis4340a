@@ -1,3 +1,6 @@
+// Rule 08. Visibility and Atomicity (VNA) Example 0
+// NonCompliant
+
 final class ControlledStop implements Runnable {
   private boolean done = false; // not volatile — other threads may see stale value
 
@@ -14,4 +17,5 @@ final class ControlledStop implements Runnable {
   public void shutdown() {
     done = true;
   }
+
 }
