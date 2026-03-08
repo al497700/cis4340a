@@ -1,4 +1,5 @@
-// Rule 00. Input Validation and Data Sanitization (IDS)
+// Rule 00. Input Validation and Data Sanitization (IDS) Example 3
+// NonCompliant
 
 if (loginSuccessful) {
     logger.severe("User login succeeded for: " + username);
@@ -6,3 +7,4 @@ if (loginSuccessful) {
     logger.severe("User login failed for: " + username);
 
 }
+
