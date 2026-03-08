@@ -1,9 +1,9 @@
 // Rule 04. Characters and Strings (STR) Example 3
-// NonCompliant
+// Compliant
 
 BigInteger x = new BigInteger("530500452766");
-byte[] byteArray = x.toByteArray();
-String s = new String(byteArray);
-byteArray = s.getBytes();
+String s = x.toString(); // Valid character data
+byte[] byteArray = s.getBytes();
+String ns = new String(byteArray);
+x = new BigInteger(ns);
 
-x = new BigInteger(byteArray);
